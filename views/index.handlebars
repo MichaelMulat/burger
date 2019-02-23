@@ -1,0 +1,61 @@
+{{!-- main header --}}
+
+
+<div class="jumbotron">
+    <h1 class="display-4">Eat-Da-Burger</h1>
+    </p>
+</div>
+
+<div class="container">
+{{!-- Uneaten Burgers --}}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="lefthead"><strong>New Burgers</strong></div>
+            <div class="panel-body">
+                <ol>
+                    {{#each burgers}}
+                    {{#unless devoured}}
+                    <li class="row d-flex justify-content-between burger-div">
+                        <span><strong>{{this.burger_name}} </strong></span>
+                        <button type="button" class="eatburger btn btn-danger" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><i class="fas fa-cookie-bite"></i> Devour this Burger</button>
+                    </li>
+                
+                    {{/unless}}
+                    {{/each}}
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="righthead"><strong>Devoured Burgers</strong></div>
+            <div class="panel-body">
+                <ol>
+                    {{#each burgers}}
+                    {{#if devoured}}
+                    <span><strong>{{this.burger_name}} </strong></span>
+                    {{!-- <button type="button" class="btn btn-danger" id="trashbutton" data-id="{{this.id}}"
+                        data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button> --}}
+                    <hr>
+                    {{/if}}
+                    {{/each}}
+                </ol>
+            </div>
+        </div>
+    </div>
+</div><!-- /row -->
+
+<div class="row">
+    <form class="createOne-form">
+        <div class="form-group">
+            <label for="newburger" id="color-override">New Burger:</label>
+            <input type="text" id="new_burger" name="burger_name">
+            {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
+            <button type="submit" class="btn btn-success" id="add_burger"><span class="fa fa-thumbs-up"></span></button>
+        </div>
+    </form>
+</div>
+</div>
